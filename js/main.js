@@ -289,6 +289,15 @@
     btn.disabled = false;
   });
 
+  /* ---------- WhatsApp chooser ---------- */
+  const waFab = $("#waFab"), waMenu = $("#waMenu");
+  if (waFab && waMenu) {
+    const setWa = (open) => { waMenu.hidden = !open; waFab.setAttribute("aria-expanded", open); waFab.classList.toggle("open", open); };
+    waFab.addEventListener("click", (e) => { e.stopPropagation(); setWa(waMenu.hidden); });
+    document.addEventListener("click", (e) => { if (!waMenu.hidden && !e.target.closest("#waFloat")) setWa(false); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") setWa(false); });
+  }
+
   /* ---------- Start ---------- */
   initTab("t-ops");
   let saved = "en"; try { saved = localStorage.getItem("brm-lang") || "en"; } catch (e) {}
