@@ -225,15 +225,19 @@
     const co2E = kwh * gf / 1000, co2D = dsl * 2.68 / 1000;
     const costE = kwh * kp, costD = dsl * dp;
     $("#kCo2").textContent = (co2E + co2D).toFixed(1) + " t";
-    $("#kCpu").textContent = "NPR " + ((costE + costD) / units).toFixed(2);
+    const after = 1 - eff;
+    $("#kCpu").textContent = "NPR " + ((costE + costD) / units).toFixed(2) + " → " + ((costE + costD) * after / units).toFixed(2);
     $("#kSave").textContent = npr((costE + costD) * eff * 12);
     $("#kAvoid").textContent = ((co2E + co2D) * eff * 12).toFixed(0) + " t";
     const data = { labels: ["Electricity", "Diesel"], datasets: [
-      { label: "Energy cost (NPR thousand per month)", data: [costE / 1000, costD / 1000], backgroundColor: [C.bL, C.yL], borderColor: C.ink, borderWidth: 1, yAxisID: "y" },
-      { label: "CO₂ (tonnes per month)", data: [co2E, co2D], backgroundColor: [C.gL, C.pL], borderColor: C.ink, borderWidth: 1, yAxisID: "y1" } ] };
-    const opts = { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: "bottom" } },
-      scales: { y: { position: "left", title: { display: true, text: "NPR thousand" } }, y1: { position: "right", grid: { drawOnChartArea: false }, title: { display: true, text: "t CO₂" } } } };
-    if (co2Chart) { co2Chart.data = data; co2Chart.update(); } else co2Chart = new Chart($("#co2Chart"), { type: "bar", data, options: opts });
+      { label: "Cost today (NPR thousand/month)", data: [costE / 1000, costD / 1000], backgroundColor: C.bL, borderColor: C.ink, borderWidth: 1, yAxisID: "y" },
+      { label: "Cost after improvement", data: [costE * after / 1000, costD * after / 1000], backgroundColor: C.gL, borderColor: C.ink, borderWidth: 1, yAxisID: "y" },
+      { label: "CO₂ today (t/month)", data: [co2E, co2D], backgroundColor: C.pL, borderColor: C.ink, borderWidth: 1, yAxisID: "y1" },
+      { label: "CO₂ after improvement", data: [co2E * after, co2D * after], backgroundColor: C.yL, borderColor: C.ink, borderWidth: 1, yAxisID: "y1" } ] };
+    const yMax = Math.max(costE, costD) / 1000 * 1.1 || 1, y1Max = Math.max(co2E, co2D) * 1.1 || 1;
+    const opts = { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: "bottom", labels: { boxWidth: 14, font: { size: 11 } } } },
+      scales: { y: { position: "left", min: 0, max: yMax, title: { display: true, text: "NPR thousand per month" } }, y1: { position: "right", min: 0, max: y1Max, grid: { drawOnChartArea: false }, title: { display: true, text: "t CO₂ per month" } } } };
+    if (co2Chart) { co2Chart.data = data; co2Chart.options = opts; co2Chart.update(); } else co2Chart = new Chart($("#co2Chart"), { type: "bar", data, options: opts });
   }
   ["#cKwh", "#cKwhP", "#cGrid", "#cDsl", "#cDslP", "#cUnits", "#cEff"].forEach(s => $(s).addEventListener("input", updateCO2));
 
