@@ -25,6 +25,7 @@
     $$(".lang-switch button").forEach(b => b.classList.toggle("active", b.dataset.lang === lang));
     try { localStorage.setItem("brm-lang", lang); } catch (e) {}
     renderDmaic(currentDm);
+    document.dispatchEvent(new CustomEvent("brm:lang", { detail: lang }));
   }
   $$(".lang-switch button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
 
