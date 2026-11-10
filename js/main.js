@@ -3,7 +3,7 @@
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const C = { green: "#2e8b57", blue: "#2b7bb9", pink: "#d9486b", yellow: "#c99a00", ink: "#111111",
-              gL: "#B9E4C9", bL: "#A9D8F5", pL: "#F9C9D4", yL: "#FFF3B0" };
+              gL: "#9FDBB4", bL: "#8DCDF2", pL: "#F5ADC1", yL: "#FFE680" };
   const npr = (v) => "NPR " + Math.round(v).toLocaleString("en-US");
   const nprM = (v) => "NPR " + v.toFixed(1) + " M";
   if (window.Chart) { Chart.defaults.font.family = "Arial, Helvetica, sans-serif"; Chart.defaults.color = "#111"; }

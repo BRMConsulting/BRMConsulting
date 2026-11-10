@@ -23,7 +23,7 @@ try {
   };
   const rings = [mk(0x7fcf9e, 0, 0), mk(0x6fbfe8, Math.PI / 2.6, 0.4), mk(0xf0a3b6, -Math.PI / 2.6, -0.4)];
   const core = new THREE.Mesh(new THREE.IcosahedronGeometry(0.75, 1),
-    new THREE.MeshStandardMaterial({ color: 0xfff3b0, roughness: 0.4, flatShading: true }));
+    new THREE.MeshStandardMaterial({ color: 0xffe680, roughness: 0.4, flatShading: true }));
   group.add(core);
   const wire = new THREE.Mesh(new THREE.IcosahedronGeometry(0.95, 1),
     new THREE.MeshBasicMaterial({ color: 0x111111, wireframe: true, transparent: true, opacity: 0.25 }));

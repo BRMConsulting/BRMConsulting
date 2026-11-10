@@ -21,7 +21,7 @@
   /* ---------- Content ---------- */
   const AREAS = [
     {
-      id: "ops", grad: "gOps", light: "#B9E4C9", dark: "#2e8b57",
+      id: "ops", grad: "gOps", light: "#9FDBB4", dark: "#2e8b57", btn: "#2e9e5b", btnInk: "#fff",
       short: { en: "Operations", ne: "सञ्चालन" },
       title: { en: "Operations, Optimisation & Resilience", ne: "सञ्चालन, अनुकूलन र सुदृढता" },
       line: { en: "Lean processes, optimisation models, business continuity", ne: "लीन प्रक्रिया, अनुकूलन मोडेल, व्यवसाय निरन्तरता" },
@@ -56,7 +56,7 @@
       demo: { en: "Live demo: find the bottleneck", ne: "प्रत्यक्ष डेमो: अवरोध पत्ता लगाउनुहोस्" }
     },
     {
-      id: "it", grad: "gIt", light: "#A9D8F5", dark: "#2b7bb9",
+      id: "it", grad: "gIt", light: "#8DCDF2", dark: "#2b7bb9", btn: "#2b84c9", btnInk: "#fff",
       short: { en: "IT & Digital", ne: "आईटी र डिजिटल" },
       title: { en: "IT & Digital", ne: "आईटी र डिजिटल" },
       line: { en: "Digital roadmaps, software and websites, AI automation", ne: "डिजिटल मार्गचित्र, सफ्टवेयर र वेबसाइट, एआई स्वचालन" },
@@ -90,7 +90,7 @@
       demo: { en: "Live demo: digital maturity check", ne: "प्रत्यक्ष डेमो: डिजिटल परिपक्वता जाँच" }
     },
     {
-      id: "sus", grad: "gSus", light: "#FFF3B0", dark: "#b08600",
+      id: "sus", grad: "gSus", light: "#FFE680", dark: "#b08600", btn: "#f2c230", btnInk: "#111",
       short: { en: "Sustainability", ne: "दिगोपना" },
       title: { en: "Sustainability", ne: "दिगोपना" },
       line: { en: "Energy savings, carbon and ESG data, twin transition", ne: "ऊर्जा बचत, कार्बन र ESG तथ्याङ्क, ट्विन ट्रान्जिसन" },
@@ -123,7 +123,7 @@
       demo: { en: "Live demo: sustainability readiness", ne: "प्रत्यक्ष डेमो: दिगोपना तयारी" }
     },
     {
-      id: "fin", grad: "gFin", light: "#F9C9D4", dark: "#d9486b",
+      id: "fin", grad: "gFin", light: "#F5ADC1", dark: "#d9486b", btn: "#e0507a", btnInk: "#fff",
       short: { en: "Finance", ne: "वित्त" },
       title: { en: "Finance", ne: "वित्त" },
       line: { en: "Costing and margin, cash flow, audit and funding", ne: "लागत र मार्जिन, नगद प्रवाह, लेखापरीक्षण र लगानी" },
@@ -204,6 +204,8 @@
       b.setAttribute("role", "tab");
       b.style.setProperty("--ac", a.light);
       b.style.setProperty("--acd", a.dark);
+      b.style.setProperty("--btn", a.btn);
+      b.style.setProperty("--btnInk", a.btnInk);
       b.innerHTML = `<span class="fw-item-ic">${icon(a.id)}</span><span class="fw-item-txt"><b>${T(a.title)}</b><small>${T(a.line)}</small></span><span class="fw-item-go">${T(L.explore)} →</span>`;
       b.addEventListener("click", () => select(a.id));
       list.appendChild(b);
