@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="12" fill="#FFF3B0"/>
-  <text x="32" y="38" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#111">BRM</text>
-  <rect x="9" y="45" width="14" height="5" rx="1.5" fill="#7fcf9e"/>
-  <rect x="25" y="45" width="14" height="5" rx="1.5" fill="#6fbfe8"/>
-  <rect x="41" y="45" width="14" height="5" rx="1.5" fill="#f0a3b6"/>
+  <defs>
+    <linearGradient id="rib" gradientUnits="userSpaceOnUse" x1="4" y1="14" x2="160" y2="66">
+      <stop offset="0" stop-color="#3fa9e6"/><stop offset="0.3" stop-color="#6cc4ef"/><stop offset="0.43" stop-color="#f4c542"/>
+      <stop offset="0.62" stop-color="#8fd47a"/><stop offset="0.8" stop-color="#f08ab4"/><stop offset="1" stop-color="#e0457f"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="12" fill="#ffffff"/>
+  <g transform="translate(3 17) scale(0.36)" fill="none" stroke-linejoin="round" stroke="url(#rib)" stroke-width="12"><path d="M10 72V8h22a15 15 0 0 1 0 30H10M10 38h25a17 17 0 0 1 0 34H10"/><path d="M66 72V8h21a15 15 0 0 1 0 30H66M80 38l20 34"/><path d="M116 72V8l20 36 20-36v64"/></g>
 </svg>

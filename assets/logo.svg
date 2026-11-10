@@ -1,9 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 80" role="img" aria-label="BRM Consulting">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 80" role="img" aria-label="BRM Consulting">
   <title>BRM Consulting</title>
-  <text x="0" y="50" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700" fill="#111111" letter-spacing="1">BRM</text>
-  <rect x="2" y="58" width="38" height="7" rx="2" fill="#7fcf9e"/>
-  <rect x="44" y="58" width="38" height="7" rx="2" fill="#6fbfe8"/>
-  <rect x="86" y="58" width="40" height="7" rx="2" fill="#f0a3b6"/>
-  <text x="140" y="34" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" fill="#111111" letter-spacing="3">CONSULTING</text>
-  <text x="140" y="56" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#111111" letter-spacing="0.6">Balance · Resilience · Modernization</text>
+  <defs>
+    <linearGradient id="rib" gradientUnits="userSpaceOnUse" x1="4" y1="14" x2="160" y2="66">
+      <stop offset="0" stop-color="#3fa9e6"/>
+      <stop offset="0.3" stop-color="#6cc4ef"/>
+      <stop offset="0.43" stop-color="#f4c542"/>
+      <stop offset="0.62" stop-color="#8fd47a"/>
+      <stop offset="0.8" stop-color="#f08ab4"/>
+      <stop offset="1" stop-color="#e0457f"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke-linejoin="round" stroke-linecap="butt">
+    <g stroke="#1b2a4a" stroke-opacity="0.12" stroke-width="11.5" transform="translate(1 1.4)"><path d="M10 72V8h22a15 15 0 0 1 0 30H10M10 38h25a17 17 0 0 1 0 34H10"/><path d="M66 72V8h21a15 15 0 0 1 0 30H66M80 38l20 34"/><path d="M116 72V8l20 36 20-36v64"/></g>
+    <g stroke="url(#rib)" stroke-width="10"><path d="M10 72V8h22a15 15 0 0 1 0 30H10M10 38h25a17 17 0 0 1 0 34H10"/><path d="M66 72V8h21a15 15 0 0 1 0 30H66M80 38l20 34"/><path d="M116 72V8l20 36 20-36v64"/></g>
+    <g stroke="#ffffff" stroke-opacity="0.55" stroke-width="2" transform="translate(-2.2 -2.2)"><path d="M10 72V8h22a15 15 0 0 1 0 30H10M10 38h25a17 17 0 0 1 0 34H10"/><path d="M66 72V8h21a15 15 0 0 1 0 30H66M80 38l20 34"/><path d="M116 72V8l20 36 20-36v64"/></g>
+  </g>
+  <text x="176" y="36" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#111111" letter-spacing="3">CONSULTING</text>
+  <text x="176" y="57" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#111111" letter-spacing="0.6">Balance · Resilience · Modernization</text>
 </svg>
