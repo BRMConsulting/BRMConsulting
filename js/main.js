@@ -268,14 +268,22 @@
         })
       });
       const j = await r.json().catch(() => ({}));
+      if (String(j.success) === "false" && /activat/i.test(j.message || "")) {
+        msg.classList.add("err");
+        msg.textContent = ne ? "फारम अझै सक्रिय गरिएको छैन। सक्रिय भएपछि कृपया फेरि प्रयास गर्नुहोस्।"
+                             : "The form is waiting for activation by the site owner. Please try again shortly, or email us directly.";
+        btn.disabled = false; return;
+      }
       if (!r.ok || String(j.success) === "false") throw new Error(j.message || "failed");
       form.reset();
       msg.classList.add("ok");
       msg.textContent = ne ? "धन्यवाद! तपाईंको सन्देश पठाइयो। हामी छिट्टै सम्पर्क गर्नेछौं।" : "Thank you. Your message has been sent and we will reply soon.";
     } catch (e) {
       msg.classList.add("err");
-      msg.innerHTML = ne ? "सन्देश पठाउन सकिएन। कृपया <a href=\"mailto:rajanvk56@outlook.com\">rajanvk56@outlook.com</a> मा इमेल गर्नुहोस्।"
-                         : "Sorry, the message could not be sent. Please email <a href=\"mailto:rajanvk56@outlook.com\">rajanvk56@outlook.com</a>.";
+      const mail = "mailto:rajanvk56@outlook.com?cc=basantbasnet51@gmail.com&subject=" + encodeURIComponent("Enquiry from " + f.name) +
+        "&body=" + encodeURIComponent(f.message + "\n\n" + f.name + "\n" + f.email + (f.phone ? "\n" + f.phone : ""));
+      msg.innerHTML = ne ? "सन्देश पठाउन सकिएन। <a href=\"" + mail + "\">यहाँ थिचेर आफ्नो इमेलबाट पठाउनुहोस्</a>।"
+                         : "Sorry, the message could not be sent. <a href=\"" + mail + "\">Click here to send it from your own email</a>.";
     }
     btn.disabled = false;
   });
