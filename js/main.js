@@ -241,6 +241,45 @@
   }
   ["#cKwh", "#cKwhP", "#cGrid", "#cDsl", "#cDslP", "#cUnits", "#cEff"].forEach(s => $(s).addEventListener("input", updateCO2));
 
+  /* ---------- Enquiry form (FormSubmit) ---------- */
+  const form = $("#enquiry");
+  if (form) form.addEventListener("submit", async ev => {
+    ev.preventDefault();
+    const ne = document.documentElement.lang === "ne";
+    const msg = $("#formMsg"), btn = form.querySelector("button[type=submit]");
+    const f = Object.fromEntries(new FormData(form).entries());
+    msg.className = "form-msg";
+    if (!f.name.trim() || !f.email.trim() || !f.message.trim() || !form.email.checkValidity()) {
+      msg.classList.add("err");
+      msg.textContent = ne ? "कृपया नाम, मान्य इमेल र सोधपुछ भर्नुहोस्।" : "Please fill in your name, a valid email and your enquiry.";
+      return;
+    }
+    if (f._honey) return;
+    btn.disabled = true;
+    msg.textContent = ne ? "पठाउँदै..." : "Sending...";
+    try {
+      const r = await fetch("https://formsubmit.co/ajax/rajanvk56@outlook.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          name: f.name, email: f.email, phone: f.phone || "-", message: f.message,
+          _subject: "New enquiry from the BRM Consulting website",
+          _cc: "basantbasnet51@gmail.com", _template: "table", _captcha: "false"
+        })
+      });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok || String(j.success) === "false") throw new Error(j.message || "failed");
+      form.reset();
+      msg.classList.add("ok");
+      msg.textContent = ne ? "धन्यवाद! तपाईंको सन्देश पठाइयो। हामी छिट्टै सम्पर्क गर्नेछौं।" : "Thank you. Your message has been sent and we will reply soon.";
+    } catch (e) {
+      msg.classList.add("err");
+      msg.innerHTML = ne ? "सन्देश पठाउन सकिएन। कृपया <a href=\"mailto:rajanvk56@outlook.com\">rajanvk56@outlook.com</a> मा इमेल गर्नुहोस्।"
+                         : "Sorry, the message could not be sent. Please email <a href=\"mailto:rajanvk56@outlook.com\">rajanvk56@outlook.com</a>.";
+    }
+    btn.disabled = false;
+  });
+
   /* ---------- Start ---------- */
   initTab("t-ops");
   let saved = "en"; try { saved = localStorage.getItem("brm-lang") || "en"; } catch (e) {}
